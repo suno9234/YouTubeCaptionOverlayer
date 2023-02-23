@@ -1,0 +1,2 @@
+YouTubeCaptionOverlayer[[:space:]]Setup[[:space:]]1.0.0.exe filter=lfs diff=lfs merge=lfs -text
+YouTubeCaptionOverlayer[[:space:]]Setup[[:space:]]1.0.0.exe.blockmap filter=lfs diff=lfs merge=lfs -text

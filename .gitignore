@@ -1,0 +1,9 @@
+node_modules
+dist/win-ia32-unpacked
+dist/builder-debug.yml
+dist/builder-effective-config.yaml
+dist/win-unpacked
+dist/latest.yml
+packge-lock.json
+
+.github

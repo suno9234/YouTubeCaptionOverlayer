@@ -1,0 +1,23 @@
+body{
+  background : rgba(27, 27, 27, 0);
+  width : 100%;
+  height : 100%;
+  display:flex;
+  color : white;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  overflow : hidden;
+}
+.caption-wrapper{
+  background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0));
+  display:flex;
+  flex-shrink: 1;
+  margin-top: 80vh;
+  width : 90vw;
+  flex-direction: column;
+  align-items: center;
+  font-size : 30px;
+  font-weight: 600;
+  line-height: 40px;
+}
