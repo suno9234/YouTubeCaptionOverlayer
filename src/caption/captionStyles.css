@@ -8,6 +8,7 @@ body{
   justify-content: center;
   align-items: center;
   overflow : hidden;
+  margin : 0;
 }
 .caption-wrapper{
   background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0));
