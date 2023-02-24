@@ -8,6 +8,7 @@ window.onload = () => {
   const caption0 = document.getElementById('caption0')
   const caption1 = document.getElementById('caption1')
   wrapper.style.background = myStorage.getItem('background') || 'background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0))'
+  wrapper.style.color = myStorage.getItem('color') || '#ffffff'
   wrapper.style.width = myStorage.getItem('width') || `90vw`
   wrapper.style.fontSize = myStorage.getItem('fontSize') || '30px'
   wrapper.style.fontWeight = myStorage.getItem('fontWeight') || '600'
