@@ -7,17 +7,12 @@ window.onload = () => {
   const wrapper = document.getElementById('caption-wrapper')
   const caption0 = document.getElementById('caption0')
   const caption1 = document.getElementById('caption1')
-  wrapper.style = {
-    flexDirection: `column`,
-    display: `flex`,
-    flexShrink: `1`,
-    alignItems: `center`,
-    background: myStorage.getItem('background') || 'background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0))',
-    width: myStorage.getItem('width') || `90vw`,
-    fontSize: myStorage.getItem('fontSize') || '30px',
-    fontWeight: myStorage.getItem('fontWeight') || '600',
-    lineHeight: myStorage.getItem('lineHeight') || myStorage.getItem('fontWeight')*1.2  || '40px',
-  }
+  wrapper.style.background = myStorage.getItem('background') || 'background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0))'
+  wrapper.style.width = myStorage.getItem('width') || `90vw`
+  wrapper.style.fontSize = myStorage.getItem('fontSize') || '30px'
+  wrapper.style.fontWeight = myStorage.getItem('fontWeight') || '600'
+  wrapper.style.lineHeight = myStorage.getItem('lineHeight') || myStorage.getItem('fontWeight') * 1.2 || '40px'
+
   caption0.innerText = ''
   caption1.innerText = ''
   ipcRenderer.on('onChangeCaption', (evt, payload) => {
