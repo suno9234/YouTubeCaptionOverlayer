@@ -88,10 +88,12 @@ function createWindow() {
   tray.setContextMenu(contextMenu)
   tray.on('click', () => {
     mainWindow.show()
+    settingWindow.show()
   })
   mainWindow.on('close', (e) => {
     e.preventDefault()
     mainWindow.hide()
+    settingWindow.hide()
 
   })
 }
