@@ -1,5 +1,5 @@
 const { ipcRenderer } = require('electron')
-
+const myStorage = localStorage;
 window.onload = () => {
   const heightSlider = document.getElementById('user-height')
   const widthSlider = document.getElementById('user-width')
@@ -9,6 +9,12 @@ window.onload = () => {
   const backgroundColorSelector = document.getElementById('user-background-color')
   const opacitySlider = document.getElementById('user-opacity')
 
+  heightSlider.value = myStorage.getItem('marginTop') || '80vh'
+  widthSlider.value = myStorage.getItem('width') || '90vw'
+  fontSizeSlider.value = myStorage.getItem('fontSize') || '30px'
+  fontWeightSlider.value = myStorage.getItem('fontWeight') || '600'
+  fontColorSelector.value = myStorage.getItem('color') || '#ffffff'
+  
   heightSlider.oninput = ()=>{
     ipcRenderer.send('onChangeHeight',heightSlider.value)
   }
