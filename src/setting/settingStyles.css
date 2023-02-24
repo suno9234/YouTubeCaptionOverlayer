@@ -1,3 +1,38 @@
 body{
-  background-color: gray;
+  display:flex;
+  width:100%;
+  height:100%;
+  background-color: red;
+  margin : 0;
+  padding : 0;
+  box-sizing: border-box;
+}
+div{
+  display: flex;
+  align-items: 'center';
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.setting-wrapper{
+  display:'flex';
+  flex : 1 1 0;
+  align-items: 'center';
+  flex-direction: column;
+  background-color: #b9bbbe;
+  justify-content: center;
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+}
+span{
+  text-align: center;
+}
+input{
+  display: flex;
+  align-items: 'center';
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }

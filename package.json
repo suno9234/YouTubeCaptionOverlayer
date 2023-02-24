@@ -1,6 +1,6 @@
 {
   "name": "electron-quick-start",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "appId": "com.electron.ytc",
     "asar": true,
     "mac": {
+      "icon": "build/icon.png",
       "target": [
         "default"
       ]
@@ -36,6 +37,7 @@
       "title": "YTCOverlayer"
     },
     "win": {
+      "icon": "build/icon.png",
       "target": [
         {
           "target": "nsis",
@@ -49,6 +51,7 @@
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": false,
+      "deleteAppDataOnUninstall": true,
       "createDesktopShortcut": true
     },
     "directories": {
