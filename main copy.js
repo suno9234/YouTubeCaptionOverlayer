@@ -1,45 +1,20 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain, screen, Tray, Menu, BrowserView } = require('electron')
+const { app, BrowserWindow, ipcMain, screen, Tray, Menu } = require('electron')
 const path = require('path')
 const url = require('url')
-let mainWindow = null
-let view = null
-let tray = null
 
 function createWindow() {
   // Create the browser window.
   const { width, height } = screen.getPrimaryDisplay().workAreaSize;
-  mainWindow = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: 1000,
     height: 600,
-    minWidth: 400,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
+      backgroundThrottling: false,
+      preload: path.join(__dirname, 'src', 'mainPage', 'mainPage.js')
     },
     title: 'YoutubeCaptionOverlayer',
-    titleBarStyle: 'hidden',
   })
-  mainWindow.loadURL(path.join(__dirname, 'src', 'mainPage', 'index.html'))
-  view = new BrowserView({
-    webPreferences: {
-      devTools: true,
-      nodeIntegration: true,
-      contextIsolation: false,
-      preload: path.join(__dirname, 'src', 'mainPage', 'browserView.js')
-    }
-  })
-  view.setBounds({ x: 0, y: 50, width: 1000, height: 520 })
-  view.setAutoResize({ width: true, height: true })
-  view.webContents.loadURL('https://www.youtube.com')
-  mainWindow.setBrowserView(view)
-  mainWindow.setMenuBarVisibility(false);
-  mainWindow.on('ready-to-show', () => {
-    const [mWidth, mHeight] = mainWindow.getSize()
-    view.setBounds({ x: 0, y: 80, width: mWidth, height: mHeight - 80 });
-    mainWindow.show()
-  });
-
   const settingWindow = new BrowserWindow({
     width: 300,
     height: 350,
@@ -59,8 +34,8 @@ function createWindow() {
       contextIsolation: false,
     },
     /* parent: mainWindow, */
-    minimizable: false,
-    skipTaskbar: true,
+    minimizable:false,
+    skipTaskbar:true,
     frame: false,
     transparent: true,
   })
@@ -68,6 +43,7 @@ function createWindow() {
 
   subWindow.loadURL(path.join(__dirname, 'src', 'caption', 'caption.html'))
   settingWindow.loadURL(path.join(__dirname, 'src', 'setting', 'setting.html'))
+  mainWindow.loadURL('https://www.youtube.com/')
 
   settingWindow.setMenu(null)
   mainWindow.setMenu(null)
@@ -77,7 +53,6 @@ function createWindow() {
   subWindow.setIgnoreMouseEvents(true)
 
   settingWindow.setClosable(false)
-
 
   ipcMain.on('onChangeCaption', (evt, payload) => {
     subWindow.webContents.send('onChangeCaption', payload)
@@ -100,51 +75,27 @@ function createWindow() {
   ipcMain.on('onChangeBackgroundColor', (evt, payload) => {
     subWindow.webContents.send('onChangeBackgroundColor', payload)
   })
-  ipcMain.on('goBack', () => {
-    view.webContents.goBack();
-  })
-  ipcMain.on('goForward', () => {
-    view.webContents.goForward();
-  })
-  ipcMain.on('reload', () => {
-    view.webContents.reload();
-  })
-  ipcMain.on('goBack', () => {
-    view.webContents.goBack();
-  })
-  ipcMain.on('minimize', () => {
-    mainWindow.minimize()
-    settingWindow.minimize()
-  })
-  ipcMain.on('close', () => {
-    mainWindow.hide()
-    settingWindow.hide()
-  })
-
-  if (!tray) {
-    tray = new Tray(path.join(__dirname, 'tray-icon.png'))
-    const contextMenu = Menu.buildFromTemplate([
-      {
-        label: 'Quit(종료)',
-        click: () => {
-          BrowserWindow.getAllWindows().forEach(win => win.destroy())
-        }
+  const tray = new Tray(path.join(__dirname, 'tray-icon.png'))
+  const contextMenu = Menu.buildFromTemplate([
+    {
+      label: 'Quit(종료)',
+      click: () => {
+        BrowserWindow.getAllWindows().forEach(win=>win.destroy())
       }
-    ])
-    tray.setToolTip('YoutubeCaptionOverlayer')
-    tray.setContextMenu(contextMenu)
-    tray.on('click', () => {
-      mainWindow.show()
-      settingWindow.show()
-    })
-  }
+    }
+  ])
+  tray.setToolTip('YoutubeCaptionOverlayer')
+  tray.setContextMenu(contextMenu)
+  tray.on('click', () => {
+    mainWindow.show()
+    settingWindow.show()
+  })
   mainWindow.on('close', (e) => {
     e.preventDefault()
     mainWindow.hide()
     settingWindow.hide()
 
   })
-
 }
 
 
@@ -155,8 +106,6 @@ app.whenReady().then(() => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
-
-
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

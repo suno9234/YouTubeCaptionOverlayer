@@ -7,6 +7,7 @@ window.onload = () => {
   const wrapper = document.getElementById('caption-wrapper')
   const caption0 = document.getElementById('caption0')
   const caption1 = document.getElementById('caption1')
+  const caption2 = document.getElementById('caption2')
   wrapper.style.background = myStorage.getItem('background') || 'background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0))'
   wrapper.style.color = myStorage.getItem('color') || '#ffffff'
   wrapper.style.width = myStorage.getItem('width') || `90vw`
@@ -16,7 +17,13 @@ window.onload = () => {
 
   caption0.innerText = ''
   caption1.innerText = ''
+  caption2.innerText = ''
   ipcRenderer.on('onChangeCaption', (evt, payload) => {
+    if(payload.length > 2){
+      caption0.innerText = payload[0]
+      caption1.innerText = payload[1]
+      caption2.innerText = payload[2]
+    }
     if (payload.length > 1) {
       caption0.innerText = payload[0]
       caption1.innerText = payload[1]
@@ -68,6 +75,7 @@ window.onload = () => {
     if (elapsedTime > 10) {
       caption0.innerText = "";
       caption1.innerText = "";
+      caption2.innerText = "";
       elapsedTime = 0;
     }
   }, 1000)

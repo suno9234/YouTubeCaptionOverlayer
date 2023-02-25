@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Youtube Caption Overlayer</title>
+</head>
+<link href="./styles.css" rel="stylesheet">
+
+<body>
+  <!-- 상단바 -->
+  <div class="title-bar">
+    <div class = "logo">
+      <img src="../../tray-icon.png" width='24px' height="24px"/>
+      <div class="title">Youtube Caption Overlayer</div>
+    </div>
+    <div id="title-bar-buttons" >
+      <button id = "minimizeBtn" class="topBtn">—</button>
+      <button id = "closeBtn" class ="topBtn">✕</button>
+    </div>
+  </div>
+  <div class="menu-bar">
+    <!-- 뒤로가기 버튼 -->
+    <div class="button-wrapper">
+      <button class="button" id="backButton">
+        <i class="material-icons">B</i>
+      </button>
+    </div>
+    <div class="button-wrapper">
+      <button class="button" id="forwardButton">
+        <i class="material-icons">F</i>
+      </button>
+    </div>
+    <!-- 앞으로 가기 버튼 -->
+    <div class="button-wrapper">
+      <!-- 새로고침 버튼 -->
+      <button class="button" id="reloadButton">
+        <i class="material-icons">R</i>
+      </button>
+    </div>
+    <!-- 주소창 -->
+    <input type="text" class="address-bar" id="addressBar" value="https://www.youtube.com">
+  </div>
+  <script src="./renderer.js"></script>
+</body>
+
+</html>
