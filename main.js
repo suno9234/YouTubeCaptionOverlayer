@@ -24,6 +24,7 @@ function createWindow() {
   mainWindow.loadURL(path.join(__dirname, 'src', 'mainPage', 'index.html'))
   view = new BrowserView({
     webPreferences: {
+      backgroundThrottling:false,
       devTools: true,
       nodeIntegration: true,
       contextIsolation: false,

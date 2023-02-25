@@ -72,7 +72,7 @@ window.onload = () => {
   })
   intervalId = setInterval(() => {
     elapsedTime += 1;
-    if (elapsedTime > 10) {
+    if (elapsedTime > 15) {
       caption0.innerText = "";
       caption1.innerText = "";
       caption2.innerText = "";
