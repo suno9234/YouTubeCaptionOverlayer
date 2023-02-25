@@ -9,14 +9,13 @@ window.onload = () => {
   const backgroundColorSelector = document.getElementById('user-background-color')
   const opacitySlider = document.getElementById('user-opacity')
 
-  heightSlider.value = myStorage.getItem('marginTop') || '80vh'
-  widthSlider.value = myStorage.getItem('width') || '90vw'
-  fontSizeSlider.value = myStorage.getItem('fontSize') || '30px'
+  heightSlider.value = myStorage.getItem('marginTop') || '80'
+  widthSlider.value = myStorage.getItem('width') || '90'
+  fontSizeSlider.value = myStorage.getItem('fontSize') || '30'
   fontWeightSlider.value = myStorage.getItem('fontWeight') || '600'
   fontColorSelector.value = myStorage.getItem('color') || '#ffffff'
 
   const background = myStorage.getItem('background')
-  console.log(background)
   const rgbaRegex = /rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)/g;
   const rgbaValues = [];
   let match;

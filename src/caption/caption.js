@@ -38,16 +38,16 @@ window.onload = () => {
   })
   ipcRenderer.on('onChangeHeight', (evt, payload) => {
     wrapper.style.marginTop = payload + 'vh'
-    myStorage.setItem('marginTop', payload + 'vh')
+    myStorage.setItem('marginTop', payload)
   })
   ipcRenderer.on('onChangeWidth', (evt, payload) => {
     wrapper.style.width = payload + 'vw'
-    myStorage.setItem('width', payload + 'vw')
+    myStorage.setItem('width', payload)
   })
   ipcRenderer.on('onChangeFontSize', (evt, payload) => {
     wrapper.style.fontSize = payload + 'px'
     wrapper.style.lineHeight = payload * 1.2 + 'px'
-    myStorage.setItem('fontSize', payload + 'px')
+    myStorage.setItem('fontSize', payload)
     myStorage.setItem('lineHeight', payload * 1.2 + 'px')
   })
   ipcRenderer.on('onChangeFontWeight', (evt, payload) => {
