@@ -78,7 +78,7 @@ function createWindow() {
 
   subWindow.setAlwaysOnTop(true)
   subWindow.setIgnoreMouseEvents(true)
-  settingWindow.webContents.openDevTools({mode:'detach'})
+  /* settingWindow.webContents.openDevTools({mode:'detach'}) */
 
   settingWindow.setClosable(false)
 
