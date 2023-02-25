@@ -17,6 +17,7 @@ function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    movable: true,
     title: 'YoutubeCaptionOverlayer',
     titleBarStyle: 'hidden',
   })
@@ -73,8 +74,11 @@ function createWindow() {
   mainWindow.setMenu(null)
   subWindow.setMenu(null)
 
+ /*  mainWindow.webContents.openDevTools({mode:'detach'}); */
+
   subWindow.setAlwaysOnTop(true)
   subWindow.setIgnoreMouseEvents(true)
+  /* settingWindow.webContents.openDevTools({mode:'detach'}) */
 
   settingWindow.setClosable(false)
 
@@ -109,9 +113,6 @@ function createWindow() {
   ipcMain.on('reload', () => {
     view.webContents.reload();
   })
-  ipcMain.on('goBack', () => {
-    view.webContents.goBack();
-  })
   ipcMain.on('minimize', () => {
     mainWindow.minimize()
     settingWindow.minimize()
@@ -119,6 +120,16 @@ function createWindow() {
   ipcMain.on('close', () => {
     mainWindow.hide()
     settingWindow.hide()
+  })
+  ipcMain.on('getMouseOffset', (e, payload) => {
+    const bounds = mainWindow.getBounds();
+    const mouseOffset = { x: 0, y: 0 }
+    mouseOffset.x = payload.x - bounds.x
+    mouseOffset.y = payload.y - bounds.y
+    e.reply('returnMouseOffset', mouseOffset)
+  })
+  ipcMain.on('moveWindow', (e, payload) => {
+    mainWindow.setPosition(payload.x,payload.y)
   })
 
   if (!tray) {

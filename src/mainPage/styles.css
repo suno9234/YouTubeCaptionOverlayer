@@ -23,6 +23,7 @@ body{
   color : white;
   padding-left: 4px;
   border-bottom: 1px solid #4d4d4e;
+  cursor:default;
 }
 .logo{
   display:flex;
@@ -31,9 +32,9 @@ body{
 }
 .title{
   margin-left: 4px;
+  cursor:default;
 }
 .menu-bar {
-  -webkit-app-region: drag;
   display:flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -86,6 +87,7 @@ body{
   border: none;
   cursor: pointer;
   font-size: 24px;
+  width:100%;
   margin-right: 8px;
   outline: none;
   -webkit-user-select: none;
