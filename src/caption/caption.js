@@ -29,12 +29,15 @@ window.onload = () => {
     if (payload.length > 1) {
       caption0.innerText = payload[0]
       caption1.innerText = payload[1]
+      caption2.innerText = ''
     } else if (payload.length > 0) {
       caption0.innerText = payload[0]
       caption1.innerText = ''
+      caption2.innerText = ''
     } else {
       caption0.innerText = ''
       caption1.innerText = ''
+      caption2.innerText = ''
     }
     elapsedTime = 0
   })
