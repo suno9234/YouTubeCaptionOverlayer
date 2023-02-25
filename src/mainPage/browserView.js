@@ -18,10 +18,14 @@ window.onload = () => {
             captions.push(v.innerText)
           }
         })
+        if (captions.length %2 == 0){
+          if (equals(captions.slice(0,captions.length/2),captions.slice(captions.length/2,captions.length))){
+            captions = captions.slice(0,captions.length/2)
+          }
+        }
         if (!equals(lastCaptions, captions)) {
           lastCaptions = captions
           ipcRenderer.send('onChangeCaption', captions)
-          console.log(captions)
         }
       }
 

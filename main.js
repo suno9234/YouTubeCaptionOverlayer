@@ -75,6 +75,7 @@ function createWindow() {
   mainWindow.setMenu(null)
   subWindow.setMenu(null)
 
+  /* view.webContents.openDevTools({mode:'detach'}) */
   /*  mainWindow.webContents.openDevTools({mode:'detach'}); */
   /* subWindow.webContents.openDevTools({mode:'detach'}) */
   /* settingWindow.webContents.openDevTools({mode:'detach'}) */
@@ -85,6 +86,7 @@ function createWindow() {
 
 
   ipcMain.on('onChangeCaption', (evt, payload) => {
+    console.log(payload)
     subWindow.webContents.send('onChangeCaption', payload)
   })
   ipcMain.on('onChangeHeight', (evt, payload) => {

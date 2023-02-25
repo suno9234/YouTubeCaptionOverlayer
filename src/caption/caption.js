@@ -16,7 +16,6 @@ window.onload = () => {
   wrapper.style.fontWeight = myStorage.getItem('fontWeight') || '600'
   wrapper.style.lineHeight = myStorage.getItem('fontSize') ? myStorage.getItem('fontSize') * 1.2 + 'px' : '40px'
 
-  console.log(myStorage);
   caption0.innerText = ''
   caption1.innerText = ''
   caption2.innerText = ''
@@ -25,8 +24,7 @@ window.onload = () => {
       caption0.innerText = payload[0]
       caption1.innerText = payload[1]
       caption2.innerText = payload[2]
-    }
-    if (payload.length > 1) {
+    }else if (payload.length > 1) {
       caption0.innerText = payload[0]
       caption1.innerText = payload[1]
       caption2.innerText = ''
