@@ -24,7 +24,7 @@ function createWindow() {
   mainWindow.loadURL(path.join(__dirname, 'src', 'mainPage', 'index.html'))
   view = new BrowserView({
     webPreferences: {
-      backgroundThrottling:false,
+      backgroundThrottling: false,
       devTools: true,
       nodeIntegration: true,
       contextIsolation: false,
@@ -75,12 +75,12 @@ function createWindow() {
   mainWindow.setMenu(null)
   subWindow.setMenu(null)
 
- /*  mainWindow.webContents.openDevTools({mode:'detach'}); */
+  /*  mainWindow.webContents.openDevTools({mode:'detach'}); */
+  /* subWindow.webContents.openDevTools({mode:'detach'}) */
+  /* settingWindow.webContents.openDevTools({mode:'detach'}) */
 
   subWindow.setAlwaysOnTop(true)
   subWindow.setIgnoreMouseEvents(true)
-  /* settingWindow.webContents.openDevTools({mode:'detach'}) */
-
   settingWindow.setClosable(false)
 
 
@@ -130,7 +130,7 @@ function createWindow() {
     e.reply('returnMouseOffset', mouseOffset)
   })
   ipcMain.on('moveWindow', (e, payload) => {
-    mainWindow.setPosition(payload.x,payload.y)
+    mainWindow.setPosition(payload.x, payload.y)
   })
 
   if (!tray) {

@@ -10,11 +10,13 @@ window.onload = () => {
   const caption2 = document.getElementById('caption2')
   wrapper.style.background = myStorage.getItem('background') || 'background: linear-gradient(90deg, rgba(0,0,0, 0), rgba(0,0,0,0.6), rgba(0,0,0,0.6), rgba(0,0,0, 0))'
   wrapper.style.color = myStorage.getItem('color') || '#ffffff'
-  wrapper.style.width = myStorage.getItem('width') || `90vw`
-  wrapper.style.fontSize = myStorage.getItem('fontSize') || '30px'
+  wrapper.style.width = myStorage.getItem('width') ? myStorage.getItem('width')+'vw' : `90vw`
+  wrapper.style.marginTop = myStorage.getItem('marginTop')?  myStorage.getItem('marginTop')+'vh' :  '80vh'
+  wrapper.style.fontSize = myStorage.getItem('fontSize') ? myStorage.getItem('fontSize')+'px' : '30px'
   wrapper.style.fontWeight = myStorage.getItem('fontWeight') || '600'
-  wrapper.style.lineHeight = myStorage.getItem('lineHeight') || myStorage.getItem('fontWeight') * 1.2 || '40px'
+  wrapper.style.lineHeight = myStorage.getItem('fontSize') ? myStorage.getItem('fontSize') * 1.2 + 'px' : '40px'
 
+  console.log(myStorage);
   caption0.innerText = ''
   caption1.innerText = ''
   caption2.innerText = ''
